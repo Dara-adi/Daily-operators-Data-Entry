@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_top">
+    <title>Daily Operations Data Entry</title>
+    <link rel="stylesheet" href="mr clitin project.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Daily Operations Data Entry</h1>
+
+        <form id="dataEntryForm">
+            <div id="step-1" class="step">
+                <label for="date">1. Date of Entry:</label>
+                <input type="date" id="date" name="date" required>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-2" class="step hidden">
+                <label for="site">2. Site Location:</label>
+                <input type="text" id="site" name="site" list="site-options" required>
+                <datalist id="site-options"></datalist>
+                <button type="button" class="back-btn">Back</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-3" class="step hidden">
+                <label for="equipment">3. Equipment Name:</label>
+                <input type="text" id="equipment" name="equipment" list="equipment-options" required>
+                <datalist id="equipment-options"></datalist>
+                <button type="button" class="back-btn">Back</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-4" class="step hidden">
+                <label>4. Renewal Made Today?</label>
+                <div class="radio-group">
+                    <input type="radio" id="renewal-yes" name="renewalMade" value="Yes"> <label for="renewal-yes">Yes</label>
+                    <input type="radio" id="renewal-no" name="renewalMade" value="No"> <label for="renewal-no">No</label>
+                </div>
+                <button type="button" class="back-btn">Back</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-5" class="step hidden">
+                <div id="renewal-options" class="hidden">
+                    <label for="renewal-type">5a. Renewal Type:</label>
+                    <select id="renewal-type" name="renewalType">
+                        <option value="New Lease">New Lease</option>
+                        <option value="Renewal Lease">Renewal Lease</option>
+                        <option value="Active Lease">Active Lease</option>
+                    </select>
+                </div>
+                <h2>5b. Lease Dates</h2>
+                <label for="lease-start-date">Start Date:</label>
+                <input type="date" id="lease-start-date" name="leaseStartDate">
+                <label for="lease-end-date">End Date:</label>
+                <input type="date" id="lease-end-date" name="leaseEndDate">
+                <div id="lease-remainder-display"></div>
+                <button type="button" class="back-btn">Back</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-6" class="step hidden">
+                <label>6. Other Payments?</label>
+                <div class="radio-group">
+                    <input type="radio" id="other-payments-yes" name="otherPayments" value="Yes"> <label for="other-payments-yes">Yes</label>
+                    <input type="radio" id="other-payments-no" name="otherPayments" value="No"> <label for="other-payments-no">No</label>
+                </div>
+                <button type="button" class="back-btn">Back</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-7" class="step hidden">
+                <label>7. Was the Equipment Used Today?</label>
+                <div class="radio-group">
+                    <input type="radio" id="used-yes" name="equipmentUsed" value="Yes"> <label for="used-yes">Yes</label>
+                    <input type="radio" id="used-no" name="equipmentUsed" value="No"> <label for="used-no">No</label>
+                </div>
+                <button type="button" class="back-btn">Back</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-8" class="step hidden">
+                <div id="usage-yes-options" class="hidden">
+                    <h2>Record Usage</h2>
+                    <label for="usage-hours">8a. Usage Hours:</label>
+                    <input type="time" id="usage-hours" name="usageHours" value="00:00">
+                    <label>8b. Any Breakdown?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="breakdown-yes" name="breakdown" value="Yes"> <label for="breakdown-yes">Yes</label>
+                        <input type="radio" id="breakdown-no" name="breakdown" value="No"> <label for="breakdown-no">No</label>
+                    </div>
+                    <div id="breakdown-remarks-div" class="hidden">
+                        <label for="breakdown-remarks">8c. Breakdown Remarks:</label>
+                        <textarea id="breakdown-remarks" name="breakdownRemarks"></textarea>
+                    </div>
+                </div>
+                <div id="usage-no-options" class="hidden">
+                    <h2>Record Non-Usage</h2>
+                    <label for="reason">Reason:</label>
+                    <input type="text" id="reason" name="reason">
+                </div>
+                <button type="button" class="back-btn">Back</button>
+                <button type="button" class="next-btn">Next</button>
+            </div>
+
+            <div id="step-9" class="step hidden">
+                <h2>9. End of Day Check</h2>
+                <label>Are you done for today?</label>
+                <div class="radio-group">
+                    <input type="radio" id="done-yes" name="done" value="Yes"> <label for="done-yes">Yes</label>
+                    <input type="radio" id="done-no" name="done" value="No"> <label for="done-no">No</label>
+                </div>
+                <div id="final-submit-div" class="hidden">
+                    <button type="submit">Save All entries and Close page</button>
+                </div>
+                <div id="back-to-start-div" class="hidden">
+                    <button type="button" class="btn-secondary back-to-start-btn">Save and start new entry</button>
+                </div>
+                <button type="button" class="back-btn">Back</button>
+            </div>
+        </form>
+
+        <div class="timeout-overlay" id="timeout-overlay">
+            <div class="timeout-box">
+                <h2>Session Timeout</h2>
+                <p>You have been idle for too long. Please refresh the page to continue.</p>
+            </div>
+        </div>
+    </main>
+    <script src="mr clitin project.js"></script>
+</body>
+</html>
